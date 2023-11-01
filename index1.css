@@ -1,0 +1,41 @@
+body{
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0; bottom: 0; left: 0; right: 0;
+  }
+  #main{
+    width: 200px;
+    height: 200px;
+    margin-left: -100px; margin-top: -100px;
+    /* opacity: 0.7; */
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform-style: preserve-3d;
+  }
+.sides{
+/*     opacity: 0.5; */
+     width: 200px; height: 200px;
+    position: absolute;
+    background-image: radial-gradient(#80ffff,#33ccff, pink);
+    border: 0.2px solid pink;
+}
+  .top{
+    transform: rotateX(90deg) translateZ(-100px);
+  }
+  .bottom{
+    transform: rotateX(90deg) translateZ(100px);
+  }
+  .left{
+    transform: rotateY(90deg) translateZ(-100px);
+  }
+  .right{
+    transform: rotateY(90deg) translateZ(100px);
+  }
+.front{
+    transform: translateZ(100px);
+  }
+.back{
+    transform: translateZ(-100px);
+  }
