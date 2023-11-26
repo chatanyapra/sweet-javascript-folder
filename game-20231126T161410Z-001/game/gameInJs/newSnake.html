@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="newSnake.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div id="block"></div>
+    </div>
+    <script>
+        var foodX;
+        var foodY;
+        var velocityX = 0;
+        var velocityY = 0;
+        var foodRan;
+        var snakeHead= [{x: 5, y: 5}];
+        var snakeSegments= {x: 1, y: 1};
+        var block = document.getElementById("block");
+
+        window.onload = function(){
+            foodRandom();
+            document.addEventListener('keyup', snakeBtn);
+            setInterval(update, 1000/10);
+        }
+        function foodRandom(){
+            foodRan= {x : Math.floor(Math.random()* 19)+1, y : Math.floor(Math.random()* 19)+1};
+            console.log(foodRan);
+            // console.log(foodY);
+        }
+        function update(){
+            block.innerHTML= "";
+            elem = document.createElement("div");
+            elem.style.gridRow= foodRan.y;
+            elem.style.gridColumn= foodRan.x;
+            elem.classList.add("food");
+            block.appendChild(elem);
+            // food eat by snake -----
+            if(snakeHead[0].x === foodRan.x && snakeHead[0].y === foodRan.y){
+                foodRandom();
+            }
+        // snake Head movement -----
+            snakeElem = document.createElement("div");
+            if(snakeHead[0].x>=1 && snakeHead[0].y>=1 && snakeHead[0].x<=20 && snakeHead[0].y<=20){
+                snakeHead[0].x += velocityX;
+                snakeHead[0].y += velocityY;
+            }
+            else{
+                snakeHead= [{x: 5, y: 5}];
+                alert("Well played")
+                location.reload();
+            }
+            snakeElem.style.gridRow= snakeHead[0].y;
+            snakeElem.style.gridColumn= snakeHead[0].x;
+            snakeElem.classList.add("head");
+            block.appendChild(snakeElem);
+        }
+        function snakeBtn(e){
+            if(e.code == "ArrowUp" ){
+                velocityX = 0;
+                velocityY = -1;
+            }
+            else if(e.code == "ArrowDown"){
+                velocityX = 0;
+                velocityY = 1;
+            }
+            else if(e.code == "ArrowLeft"){
+                velocityX = -1;
+                velocityY = 0;
+            }
+            else if(e.code == "ArrowRight"){
+                velocityX = 1;
+                velocityY = 0;
+            }
+        }
+    </script>
+</body>
+</html>
