@@ -1,0 +1,24 @@
+body{
+    background-color: black;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#block{
+    border: 2px solid gold;
+    margin-top: 5%;
+    display: grid;
+    grid-template-rows: repeat(20, 1fr);
+    grid-template-columns: repeat(20, 1fr);
+    /* background-image: linear-gradient(rgb(222, 185, 185), rgb(239, 239, 150)); */
+}
+#foodBlock{
+    background-color: blueviolet;
+}
+.score{position: relative;
+    color: antiquewhite;
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
